@@ -3,16 +3,35 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-buttons end>
+        <img [src] = "userData?.picture" style="width: 20%" />
+       <!-- <img src = "..\\..\\assets\\icon\\favicon.ico" style=" width: 50%;"/>--> 
+    </ion-buttons>
+      
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <ion-card *ngFor="let item of events | async" >
+    <img id="{{item.$key}}" (click) = "info(item)"/>
+    <ion-card-content (click) = "info(item)">
+      <ion-card-title>{{ item.nome }}</ion-card-title>
+      <p>{{ item.descricao }}</p>
+    </ion-card-content>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start (click) = "confirmar(item)">
+          <ion-icon name='ios-checkbox'></ion-icon>
+          Confirmar
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-start (click) = "recomendar(item)">
+          <ion-icon name='md-contacts'></ion-icon>
+          Recomendar
+          </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>

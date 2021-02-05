@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Informações do Evento</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <h2 style = "text-align: center">Confirmados</h2>
+    <ion-item *ngFor="let item of confirmados | async">
+      <h2>{{ item.$value }}</h2>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+      <h2 style = "text-align: center">Recomendado por</h2>
+      <ion-item *ngFor="let item of recomendado | async">
+        <h2>{{ item.$value }}</h2>
+      </ion-item>
+  </ion-list>
+</ion-content>
